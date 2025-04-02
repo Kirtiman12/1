@@ -1,22 +1,21 @@
-
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { searchMovies } from '@/lib/api';
-import { Movie, MovieResponse } from '@/types/movie';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Search as SearchIcon } from 'lucide-react';
-import MovieCard from '@/components/MovieCard';
-import { useDebounce } from '@/hooks/use-debounce';
-import { Skeleton } from '@/components/ui/skeleton';
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { searchMovies } from "@/lib/api";
+import { Movie, MovieResponse } from "@/types/movie";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Search as SearchIcon } from "lucide-react";
+import MovieCard from "@/components/MovieCard";
+import { useDebounce } from "@/hooks/use-debounce";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialQuery = searchParams.get('q') || '';
-  
+  const initialQuery = searchParams.get("q") || "";
+
   const [query, setQuery] = useState(initialQuery);
   const debouncedQuery = useDebounce(query, 500);
-  
+
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -45,8 +44,8 @@ const Search = () => {
       }
       setTotalPages(data.total_pages);
     } catch (err) {
-      console.error('Search error:', err);
-      setError('Failed to search movies. Please try again.');
+      console.error("Search error:", err);
+      setError("Failed to search movies. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -84,13 +83,18 @@ const Search = () => {
               onChange={(e) => setQuery(e.target.value)}
               className="bg-movie-gray pl-10 h-12 text-white"
             />
-            <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+            <SearchIcon
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              size={18}
+            />
           </div>
         </div>
 
         {!debouncedQuery && (
           <div className="text-center py-16">
-            <h2 className="text-xl text-gray-400">Search for movies to discover</h2>
+            <h2 className="text-xl text-gray-400">
+              Search for movies to discover
+            </h2>
           </div>
         )}
 
@@ -118,8 +122,9 @@ const Search = () => {
               {movies.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
               ))}
-              
-              {loading && page === 1 &&
+
+              {loading &&
+                page === 1 &&
                 Array.from({ length: 10 }).map((_, i) => (
                   <div key={`skeleton-${i}`} className="movie-card">
                     <div className="aspect-[2/3] rounded-md overflow-hidden">
