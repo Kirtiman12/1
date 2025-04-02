@@ -106,7 +106,7 @@ const Header = () => {
                   location.pathname.includes("/search")
                     ? "text-movie-red"
                     : "text-white"
-                } hover:text-movie-red`}
+                } hover:custom-40`}
               >
                 <Link to="/search">
                   <Search size={20} />

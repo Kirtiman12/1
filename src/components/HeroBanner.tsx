@@ -31,7 +31,7 @@ const HeroBanner = ({ movie }: HeroBannerProps) => {
             </p>
           </div>
         </div>
-        <div className="absolute top-[3rem] md:top-[5rem] right-[-3.5rem] md:right-[-1rem] z-10 scale-[0.5] md:scale-[0.8]">
+        <div className="absolute top-[2.8rem] md:top-[5rem] right-[-3.2rem] md:right-[-1rem] z-10 scale-[0.45] md:scale-[0.8]">
           <Switcher />
         </div>
       </div>
