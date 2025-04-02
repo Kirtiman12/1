@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FavoritesProvider } from "./context/FavoritesContext";
 import Header from "./components/Header";
-import Index from "./pages/Index";
+import Index from "./pages/Homepage";
 import Search from "./pages/Search";
 import MovieDetails from "./pages/MovieDetails";
 import Favorites from "./pages/Favorites";
